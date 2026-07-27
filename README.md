@@ -20,11 +20,11 @@ với use case là Knowledge Graph cho một tập paper nghiên cứu (memory /
 
 ## Chạy dự án
 
-\`\`\`bash
+```bash
 docker compose build
 docker compose up -d fuseki
 docker compose exec fuseki riot --version      # kiểm tra CLI có sẵn
-\`\`\`
+```
 
 Fuseki UI: http://localhost:3030
 

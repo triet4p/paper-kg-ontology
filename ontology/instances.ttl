@@ -1,0 +1,104 @@
+# instances.ttl
+@prefix : <http://example.triet4p.org/paper-kg#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# =====================================================
+# Venues (dùng chung giữa các paper)
+# =====================================================
+:arxivPreprint a :Preprint .
+:neurips2024 a :Conference .
+:icml2026 a :Conference .
+
+# =====================================================
+# Concepts (dùng chung để tạo giao điểm giữa các paper)
+# =====================================================
+:longTermMemory a :Concept .
+:agenticMemory a :Concept .
+
+# =====================================================
+# Paper 1: Hindsight
+# =====================================================
+:chrisLatimer a :Author .
+:nicoloBoschi a :Author .
+:andrewNeeser a :Author .
+
+:multiNetworkMemoryRetrieval a :Method .
+
+:longMemEval a :Benchmark .
+:loCoMo a :Benchmark .
+
+:hindsightPaper a :Paper ;
+    :title "Hindsight is 20/20: Building Agent Memory that Retains, Recalls, and Reflects" ;
+    :year "2025"^^xsd:gYear ;
+    :hasFirstAuthor :chrisLatimer ;
+    :hasCoAuthor :nicoloBoschi, :andrewNeeser ;
+    :publishedIn :arxivPreprint ;
+    :proposesMethod :multiNetworkMemoryRetrieval ;
+    :evaluatesOn :longMemEval, :loCoMo ;
+    :relatesToConcept :longTermMemory .
+
+# =====================================================
+# Paper 2: HippoRAG
+# =====================================================
+:bernalJimenezGutierrez a :Author .
+:yihengShu a :Author .
+:yuSu a :Author .
+
+:personalizedPageRankRetrieval a :Method .
+
+:musique a :Benchmark .
+:twoWikiMultiHopQA a :Benchmark .
+:hotpotQA a :Benchmark .
+
+:hippoRagPaper a :Paper ;
+    :title "HippoRAG: Neurobiologically Inspired Long-Term Memory for Large Language Models" ;
+    :year "2024"^^xsd:gYear ;
+    :hasFirstAuthor :bernalJimenezGutierrez ;
+    :hasCoAuthor :yihengShu, :yuSu ;
+    :publishedIn :neurips2024 ;
+    :proposesMethod :personalizedPageRankRetrieval ;
+    :evaluatesOn :musique, :twoWikiMultiHopQA, :hotpotQA ;
+    :relatesToConcept :longTermMemory .
+
+# =====================================================
+# Paper 3: Mem^p
+# =====================================================
+:runnanFang a :Author .
+:yuanLiang a :Author .
+:ningyuZhang a :Author .
+
+:proceduralMemoryOptimization a :Method .
+
+:travelPlanner a :Benchmark .
+:alfWorld a :Benchmark .
+
+:memPPaper a :Paper ;
+    :title "Memp: Exploring Agent Procedural Memory" ;
+    :year "2025"^^xsd:gYear ;
+    :hasFirstAuthor :runnanFang ;
+    :hasCoAuthor :yuanLiang, :ningyuZhang ;
+    :publishedIn :arxivPreprint ;
+    :proposesMethod :proceduralMemoryOptimization ;
+    :evaluatesOn :travelPlanner, :alfWorld ;
+    :relatesToConcept :agenticMemory .
+
+# =====================================================
+# Paper 4: AMA-Bench (tự đề xuất cả Method lẫn Benchmark)
+# =====================================================
+:yujieZhao a :Author .
+:boqinYuan a :Author .
+:jishenZhao a :Author .
+
+:causalityGraphRetrieval a :Method .
+
+:amaBench a :Benchmark .
+
+:amaBenchPaper a :Paper ;
+    :title "AMA-Bench: Evaluating Long-Horizon Memory for Agentic Applications" ;
+    :year "2026"^^xsd:gYear ;
+    :hasFirstAuthor :yujieZhao ;
+    :hasCoAuthor :boqinYuan, :jishenZhao ;
+    :publishedIn :icml2026 ;
+    :proposesMethod :causalityGraphRetrieval ;
+    :proposesBenchmark :amaBench ;
+    :relatesToConcept :agenticMemory .

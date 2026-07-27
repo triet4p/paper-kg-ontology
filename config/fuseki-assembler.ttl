@@ -1,0 +1,29 @@
+@prefix ja: <http://jena.hpl.hp.com/2005/11/Assembler#> .
+@prefix tdb2: <http://jena.apache.org/2016/tdb#> .
+@prefix fuseki: <http://jena.apache.org/fuseki#> .
+
+# Service: Define Fuseki Endpoint
+<#service> a fuseki:Service ;
+    fuseki:name "paper-kg" ;
+    fuseki:endpoint [ fuseki:operation fuseki:query ; fuseki:name "sparql" ] ;
+    fuseki:endpoint [ fuseki:operation fuseki:update ; fuseki:name "update" ] ;
+    fuseki:endpoint [ fuseki:operation fuseki:gsp-rw ; fuseki:name "data" ] ;
+    fuseki:dataset <#reasoningDataset> .
+
+# Dataset which client will access (after reasoner)
+<#reasoningDataset> a ja:RDFDataset ;
+    ja:defaultGraph <#inferredModel> .
+
+# Inferred model (with reasoning ground TDB2 dataset)
+<#inferredModel> a ja:InfModel ;
+    ja:baseModel <#tdbGraph> ;
+    ja:reasoner [
+        ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLMicroFBRuleReasoner>
+    ] .
+
+# Real TDB2 Graph (where data is stored)
+<#tdbGraph> a tdb2:GraphTDB2 ;
+    tdb2:dataset <#tdbDataset> .
+
+<#tdbDataset> a tdb2:DatasetTDB2 ;
+    tdb2:location "/data/fuseki-base/databases/paper-kg" .

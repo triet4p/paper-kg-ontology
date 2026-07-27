@@ -7,6 +7,8 @@ services:
       - ./ontology:/data/ontology
       - ./shapes:/data/shapes
       - ./tdb2-data:/data/fuseki-base
+      - ./config:/data/config
+    command: ["./fuseki-server", "--conf=/data/config/fuseki-assembler.ttl"]
   
   client:
     build: ./docker/client

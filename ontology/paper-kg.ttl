@@ -49,6 +49,10 @@
     rdfs:domain :Paper ;
     rdfs:range :Benchmark .
 
+:proposesBenchmark a owl:ObjectProperty ;
+    rdfs:domain :Paper ;
+    rdfs:range :Benchmark .
+
 :relatesToConcept a owl:ObjectProperty ;
     rdfs:domain :Paper ;
     rdfs:range :Concept .
