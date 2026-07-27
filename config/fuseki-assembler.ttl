@@ -10,12 +10,20 @@
     fuseki:endpoint [ fuseki:operation fuseki:gsp-rw ; fuseki:name "data" ] ;
     fuseki:dataset <#reasoningDataset> .
 
-# Dataset which client will access (after reasoner)
+# Dataset which client will access (final layer: OWL + custom rules)
 <#reasoningDataset> a ja:RDFDataset ;
     ja:defaultGraph <#inferredModel> .
 
-# Inferred model (with reasoning ground TDB2 dataset)
+# Layer 2: Custom rules (property chain) on top of OWL layer
 <#inferredModel> a ja:InfModel ;
+    ja:baseModel <#owlLayer> ;
+    ja:reasoner [
+        ja:reasonerURL <http://jena.hpl.hp.com/2003/GenericRuleReasoner> ;
+        ja:rulesFrom <file:///data/config/cites-rules.rules>
+    ] .
+
+# Layer 1: Basic RDFS/OWL inference (subClassOf, subPropertyOf, domain/range)
+<#owlLayer> a ja:InfModel ;
     ja:baseModel <#tdbGraph> ;
     ja:reasoner [
         ja:reasonerURL <http://jena.hpl.hp.com/2003/OWLMicroFBRuleReasoner>

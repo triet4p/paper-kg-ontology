@@ -1,0 +1,7 @@
+@prefix : <http://example.triet4p.org/paper-kg#> .
+
+# Base case: direct citation implies transitive citation
+[baseCites: (?a :cites ?b) -> (?a :citesTransitively ?b)]
+
+# Step case: chain through intermediate papers (forward-chaining to fixpoint)
+[chainCites: (?a :cites ?b) (?b :citesTransitively ?c) -> (?a :citesTransitively ?c)]

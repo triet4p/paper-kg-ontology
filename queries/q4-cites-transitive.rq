@@ -1,0 +1,8 @@
+PREFIX : <http://example.triet4p.org/paper-kg#>
+
+SELECT ?a ?aLabel ?c ?cLabel
+WHERE {
+    ?a :citesTransitively ?c .
+    ?a :title ?aLabel .
+    ?c :title ?cLabel .
+}

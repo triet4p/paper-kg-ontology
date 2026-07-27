@@ -61,6 +61,15 @@
     rdfs:domain :Paper ;
     rdfs:range :Venue .
 
+:cites a owl:ObjectProperty ;
+    rdfs:domain :Paper ;
+    rdfs:range :Paper .
+
+:citesTransitively a owl:ObjectProperty ;
+    rdfs:domain :Paper ;
+    rdfs:range :Paper ;
+    owl:propertyChainAxiom ( :cites :cites ) .
+
 # Datatype Properties
 :title a owl:DatatypeProperty ;
     rdfs:domain :Paper ;

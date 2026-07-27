@@ -102,3 +102,6 @@
     :proposesMethod :causalityGraphRetrieval ;
     :proposesBenchmark :amaBench ;
     :relatesToConcept :agenticMemory .
+
+:hindsightPaper :cites :hippoRagPaper .
+:hippoRagPaper :cites :memPPaper .
