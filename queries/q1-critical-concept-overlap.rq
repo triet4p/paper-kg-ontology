@@ -1,0 +1,8 @@
+PREFIX : <http://example.triet4p.org/paper-kg#>
+
+SELECT ?concept ?paper1 ?paper2
+WHERE {
+    ?paper1 :relatesToConcept ?concept .
+    ?paper2 :relatesToConcept ?concept .
+    FILTER(STR(?paper1) < STR(?paper2))
+}

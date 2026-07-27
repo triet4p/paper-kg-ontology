@@ -1,0 +1,9 @@
+PREFIX : <http://example.triet4p.org/paper-kg#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?paper ?venue ?venueType
+WHERE {
+    ?paper :publishedIn ?venue .
+    ?venue rdf:type ?venueType .
+    FILTER(?venueType != <http://www.w3.org/2002/07/owl#Thing>)
+}

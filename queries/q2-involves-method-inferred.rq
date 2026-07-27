@@ -1,0 +1,4 @@
+PREFIX : <http://example.triet4p.org/paper-kg#>
+
+SELECT ?paper ?method
+WHERE { ?paper :involvesMethod ?method }
