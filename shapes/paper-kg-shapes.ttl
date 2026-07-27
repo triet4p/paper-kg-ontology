@@ -1,0 +1,29 @@
+@prefix : <http://example.triet4p.org/paper-kg#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:PaperShape a sh:NodeShape ;
+    sh:targetClass :Paper ;
+    sh:property [
+        sh:path :title ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :year ;
+        sh:datatype xsd:gYear ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :hasFirstAuthor ;
+        sh:class :Author ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;          # mỗi paper chỉ có đúng 1 first author
+    ] ;
+    sh:property [
+        sh:path :publishedIn ;
+        sh:class :Venue ;
+        sh:minCount 1 ;
+    ] .
