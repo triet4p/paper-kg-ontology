@@ -1,0 +1,67 @@
+@prefix : <http://example.triet4p.org/paper-kg#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.triet4p.org/paper-kg> a owl:Ontology .
+
+# Classes
+:Paper a owl:Class .
+:Author a owl:Class .
+:Method a owl:Class .
+:Benchmark a owl:Class .
+:Concept a owl:Class .
+:Venue a owl:Class .
+
+# Subclasses of Venue
+:Conference a owl:Class ;
+    rdfs:subClassOf :Venue .
+:Journal a owl:Class ;
+    rdfs:subClassOf :Venue .
+:Preprint a owl:Class ;
+    rdfs:subClassOf :Venue .
+
+# Object Properties
+:hasAuthor a owl:ObjectProperty ;
+    rdfs:domain :Paper ;
+    rdfs:range :Author .
+
+:hasFirstAuthor a owl:ObjectProperty ;
+    rdfs:subPropertyOf :hasAuthor .
+
+:hasCoAuthor a owl:ObjectProperty ;
+    rdfs:subPropertyOf :hasAuthor .
+
+:involvesMethod a owl:ObjectProperty ;
+    rdfs:domain :Paper ;
+    rdfs:range :Method .
+
+:proposesMethod a owl:ObjectProperty ;
+    rdfs:subPropertyOf :involvesMethod .
+
+:usesMethod a owl:ObjectProperty ;
+    rdfs:subPropertyOf :involvesMethod .
+
+:improvesMethod a owl:ObjectProperty ;
+    rdfs:subPropertyOf :involvesMethod .
+
+:evaluatesOn a owl:ObjectProperty ;
+    rdfs:domain :Paper ;
+    rdfs:range :Benchmark .
+
+:relatesToConcept a owl:ObjectProperty ;
+    rdfs:domain :Paper ;
+    rdfs:range :Concept .
+
+:publishedIn a owl:ObjectProperty ;
+    rdfs:domain :Paper ;
+    rdfs:range :Venue .
+
+# Datatype Properties
+:title a owl:DatatypeProperty ;
+    rdfs:domain :Paper ;
+    rdfs:range xsd:string .
+
+:year a owl:DatatypeProperty ;
+    rdfs:domain :Paper ;
+    rdfs:range xsd:gYear .

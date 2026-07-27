@@ -1,0 +1,23 @@
+# Dữ liệu binary sinh ra từ việc load ontology vào TDB2 — không phải source of truth,
+# generate lại được từ ontology/*.ttl bất cứ lúc nào, không nên commit
+tdb2-data/
+
+# Fuseki tự sinh log/config runtime khi chạy
+fuseki-base/
+*.log
+
+# Python cache khi chạy scripts/
+__pycache__/
+*.pyc
+.venv/
+
+# File môi trường/secret nếu sau này thêm config riêng
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

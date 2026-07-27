@@ -1,0 +1,19 @@
+services:
+  fuseki:
+    build: ./docker/fuseki
+    ports:
+      - "3030:3030"
+    volumes:
+      - ./ontology:/data/ontology
+      - ./shapes:/data/shapes
+      - ./tdb2-data:/data/fuseki-base
+  
+  client:
+    build: ./docker/client
+    volumes:
+      - ./ontology:/app/ontology
+      - ./shapes:/app/shapes
+      - ./queries:/app/queries
+      - ./scripts:/app/scripts
+    depends_on:
+      - fuseki
